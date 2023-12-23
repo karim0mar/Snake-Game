@@ -30,7 +30,8 @@ void generateApple() {
     appleX = rand() % window::_width;
     appleY = rand() % window::_height;
     window::drawApple(appleX,appleY);
-    printf("\rScore is :%d",score);
+    printf("\r");
+    printf("Score is :%d",score);
     Tall++;
 }
 void setup(){
