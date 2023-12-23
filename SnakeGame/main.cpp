@@ -11,22 +11,22 @@ const int range = 15;
 bool running = true;
 int score = 0;
 
-bool inRangeW(int x){
+bool inRangeW(int x){ // check if the snake in the frame
     if (x < 10 || x > window::_width)
         return false;
     return true;
 }
-bool inRangeH(int y){
+bool inRangeH(int y){// check if the snake in the frame
     if (y < 10 || y+10 > window::_height)
         return false;
     return true;
 }
-bool inRangeApple(int r, int i){
+bool inRangeApple(int r, int i){// check if the snake ate the apple
     if ((appleX < r + 15 && appleX > r - 15) && (appleY < i + 15 && appleY > i - 15))
         return true;
     return false;
 }
-void generateApple() {
+void generateApple() { // بيضيف تفاحة اول ما يرن وتفاحة كل ما التفاحه الي قبلها تتاكل
     appleX = rand() % window::_width;
     appleY = rand() % window::_height;
     window::drawApple(appleX,appleY);
@@ -34,28 +34,28 @@ void generateApple() {
     printf("Score is :%d",score);
     Tall++;
 }
-void setup(){
+void setup(){// بياخد اول احداثي ل x,y وبيخلي الtail بواحد 
 dir = STOP;
 x = window::_width /2;
 y = window::_height /2;
 generateApple();
 }
 void Draw(){
-    if (!inRangeW(x + range) || !inRangeH(y + range)) {
+    if (!inRangeW(x + range) || !inRangeH(y + range)) { // لو طلع برا الفريم يكون مات
         running = false;
         std::cout << "Lose";
     }
     Sleep(80);
     for (int i = 0; i < Tall; ++i) {// here is the problem :(
-        window::addControls(x-40*i,y-40*i);
+        window::addControls(x-40*i,y-40*i); // بيرسم *
     }
-    if (inRangeApple(x,y)) {
+    if (inRangeApple(x,y)) { 
         score+=10;
         generateApple();
     }
 
 }
-void Logic(){
+void Logic(){ // بيزود الاتجاهات ب 15 مش واحد عشان الحجم بس
     switch (dir) {
         case UP:
             y-=range;
@@ -73,7 +73,7 @@ void Logic(){
             break;
     }
 }
-void Input(){
+void Input(){ // بيريد الاينبوت بتاع الزراير
     if (GetKeyState(VK_UP) & 0x8000)
         dir = UP;
     else if (GetKeyState(VK_DOWN) & 0x8000)
@@ -92,11 +92,11 @@ int main (){
         Draw();
         Input();
         Logic();
-        if (!pWindow->ProcessMessages()){
+        if (!pWindow->ProcessMessages()){ //لما الApi بيبعتله الclose message بيرجعها هنا ويوقف اللوب
             cout << "Closing";
             running = false;
         }
     }
-    delete pWindow;
+    delete pWindow; // قفل الفريم
     return 0;
 }
