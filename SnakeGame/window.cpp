@@ -7,7 +7,7 @@ int window::_height= 280;
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam , LPARAM lParam){
     switch (uMsg) {
         case WM_CREATE:
-            HH = hwnd;
+            HH = hwnd; // بخلي ال window global
             break;
         case WM_CLOSE:
             DestroyWindow(hwnd);
@@ -20,16 +20,16 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam , LPARAM lParam)
 }
 
 void window::addControls(int x , int y) {
-    if (staticControl != nullptr) {
+    if (staticControl != nullptr) { // بحذف الText قبل ما اكتب الtext الي بعده
         DestroyWindow(staticControl);
         staticControl = nullptr;
         Sleep(30);
     }
 
         staticControl = CreateWindowW(L"static", L" * ", WS_VISIBLE | WS_CHILD, x, y, 20, 20, HH, nullptr, nullptr,
-                                      nullptr);
+                                      nullptr); // بطبع ال text
 }
-    void window::drawApple(int x , int y) {
+    void window::drawApple(int x , int y) {// مكسل اكتب تاني نفس الكلام مع التفاحه
         if (appleControl != nullptr) {
             DestroyWindow(appleControl);
             appleControl = nullptr;
@@ -40,7 +40,7 @@ void window::addControls(int x , int y) {
 window::window()
      : my_hinstance(GetModuleHandle(nullptr))
 {
-WNDCLASS wndclass = {};
+WNDCLASS wndclass = {}; // El frame
 wndclass.lpszClassName = "Game Class";
 wndclass.hInstance = my_hinstance;
 wndclass.hIcon = LoadIcon(NULL,IDI_WINLOGO);
@@ -51,7 +51,7 @@ wndclass.hbrBackground = (HBRUSH)COLOR_WINDOW;
 RegisterClass(&wndclass);
 DWORD style = WS_CAPTION | WS_MINIMIZEBOX | WS_SIZEBOX;
 RECT rect;
-rect.left = 250;
+rect.left = 250;// el style bta3 elfraim
 rect.top = 250;
 rect.right = rect.left + _width;
 rect.bottom = rect.top + _height;
