@@ -45,7 +45,7 @@ void Draw(){
         std::cout << "Lose";
     }
     Sleep(80);
-    for (int i = 0; i < Tall; ++i) {
+    for (int i = 0; i < Tall; ++i) {// here is the problem :(
         window::addControls(x-40*i,y-40*i);
     }
     if (inRangeApple(x,y)) {
