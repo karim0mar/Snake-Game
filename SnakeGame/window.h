@@ -8,9 +8,9 @@ public:
     window& operator = (const window&) = delete;
     ~window();
     bool ProcessMessages();
-    static void addControls(int, int);
-    static void drawApple(int, int);
-    static void clear(int, int);
+    static void setup(int, int);
+    static void changeSnackPos(int, int);
+    static void changeApplePos(int, int);
     static int _width;
     static int _height;
 private:
