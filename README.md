@@ -2,7 +2,7 @@
 
 Welcome to the Snake Game repository! This project features a classic implementation of the Snake game. It’s a fun and interactive game where the player controls a snake that grows longer as it eats food. The goal is to avoid collisions with the walls and the snake’s own tail.
 
-![Home Screen](./SnakeGame/gameImage.png)
+![Home Screen](./SnakeGame/snack.png)
 
 ## Table of Contents
 
